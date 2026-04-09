@@ -1,0 +1,8 @@
+*.mlir
+*.ll
+*.o
+*.pth
+venv
+.vscode
+build
+__pycache__
