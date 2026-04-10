@@ -31,9 +31,9 @@ $MLIR_OPT build/chessnet.mlir \
   -o build/chessnet_llvm.mlir
 
 $TRANSLATE -mlir-to-llvmir  $BUILD/chessnet_llvm.mlir -o  $BUILD/chessnet.ll
-$LLC -filetype=obj -relocation-model=pic  $BUILD/chessnet.ll -o  $BUILD/chessnet.o
+$LLC -O3 -filetype=obj -relocation-model=pic  $BUILD/chessnet.ll -o  $BUILD/chessnet.o
 
-clang++ main.cpp  $BUILD/chessnet.o -o  $BUILD/run \
+clang++ -O3 main.cpp  $BUILD/chessnet.o -o  $BUILD/run \
   -L/home/anhtu/torch-mlir/build/lib \
   -lmlir_c_runner_utils \
   -Wl,-rpath,/home/anhtu/torch-mlir/build/lib

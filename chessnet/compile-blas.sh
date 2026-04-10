@@ -16,9 +16,9 @@ $CUSTOM_OPT $BUILD/chessnet.mlir \
 
 $TRANSLATE -mlir-to-llvmir $BUILD/chessnet_llvm.mlir -o $BUILD/chessnet.ll
 
-$LLC -filetype=obj -relocation-model=pic $BUILD/chessnet.ll -o $BUILD/chessnet.o
+$LLC -O3 -filetype=obj -relocation-model=pic $BUILD/chessnet.ll -o $BUILD/chessnet.o
 
-$CLANG main.cpp $BUILD/chessnet.o -o $BUILD/run_blas \
+$CLANG -O3 main.cpp $BUILD/chessnet.o -o $BUILD/run_blas \
   -L$LIB_PATH \
   -lmlir_c_runner_utils \
   -lopenblas \
