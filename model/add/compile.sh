@@ -1,9 +1,10 @@
 #!/bin/bash
 set -e 
 
-MLIR_OPT="/home/anhtu/torch-mlir/build/bin/mlir-opt"
-TRANSLATE="/home/anhtu/torch-mlir/build/bin/mlir-translate"
-LLC="/home/anhtu/torch-mlir/build/bin/llc"
+TORCH_MLIR_BUILD="/home/anhtu/torch-mlir/build"
+MLIR_OPT="$TORCH_MLIR_BUILD/bin/mlir-opt"
+TRANSLATE="$TORCH_MLIR_BUILD/bin/mlir-translate"
+LLC="$TORCH_MLIR_BUILD/bin/llc"
 BUILD="./build"
 
 echo "1. Lowering MLIR to LLVM Dialect..."

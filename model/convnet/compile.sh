@@ -1,11 +1,12 @@
 #!/bin/bash
 set -e
 
-MLIR_OPT="/home/anhtu/torch-mlir/build/bin/mlir-opt"
-TRANSLATE="/home/anhtu/torch-mlir/build/bin/mlir-translate"
-LLC="/home/anhtu/torch-mlir/build/bin/llc"
+TORCH_MLIR_BUILD="/home/anhtu/torch-mlir/build"
+MLIR_OPT="$TORCH_MLIR_BUILD/bin/mlir-opt"
+TRANSLATE="$TORCH_MLIR_BUILD/bin/mlir-translate"
+LLC="$TORCH_MLIR_BUILD/bin/llc"
 CLANG="/usr/bin/clang++"
-LIB_PATH="/home/anhtu/torch-mlir/build/lib"
+LIB_PATH="$TORCH_MLIR_BUILD/lib"
 BUILD="./build"
 
 sed -i 's/func.func @main\(.*\) {/func.func @forward\1 attributes {llvm.emit_c_interface} {/g' $BUILD/convnet.mlir

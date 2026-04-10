@@ -2,12 +2,11 @@
 set -e
 
 CUSTOM_OPT="../../custom-opt/build/bin/custom-opt"
-TORCH_MLIR_OPT="/home/anhtu/torch-mlir/build/bin/torch-mlir-opt"
-MLIR_OPT="/home/anhtu/torch-mlir/build/bin/mlir-opt"
-TRANSLATE="/home/anhtu/torch-mlir/build/bin/mlir-translate"
-LLC="/home/anhtu/torch-mlir/build/bin/llc"
+TORCH_MLIR_BUILD="/home/anhtu/torch-mlir/build"
+TRANSLATE="$TORCH_MLIR_BUILD/bin/mlir-translate"
+LLC="$TORCH_MLIR_BUILD/bin/llc"
 CLANG="/usr/bin/clang++"
-LIB_PATH="/home/anhtu/torch-mlir/build/lib"
+LIB_PATH="$TORCH_MLIR_BUILD/lib"
 BUILD="./build"
 
 $CUSTOM_OPT $BUILD/convnet.mlir \
