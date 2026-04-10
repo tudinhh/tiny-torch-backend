@@ -1,15 +1,12 @@
 #!/bin/bash
 set -e
 
-TORCH_MLIR_OPT="/home/anhtu/torch-mlir/build/bin/torch-mlir-opt"
 MLIR_OPT="/home/anhtu/torch-mlir/build/bin/mlir-opt"
 TRANSLATE="/home/anhtu/torch-mlir/build/bin/mlir-translate"
 LLC="/home/anhtu/torch-mlir/build/bin/llc"
 CLANG="/usr/bin/clang++"
 LIB_PATH="/home/anhtu/torch-mlir/build/lib"
 BUILD="./build"
-
-set -e
 
 sed -i 's/func.func @main\(.*\) {/func.func @forward\1 attributes {llvm.emit_c_interface} {/g' $BUILD/convnet.mlir
 
@@ -33,7 +30,7 @@ $MLIR_OPT build/convnet.mlir \
 $TRANSLATE -mlir-to-llvmir  $BUILD/convnet_llvm.mlir -o  $BUILD/convnet.ll
 $LLC -O3 -filetype=obj -relocation-model=pic  $BUILD/convnet.ll -o  $BUILD/convnet.o
 
-clang++ -O3 main.cpp  $BUILD/convnet.o -o  $BUILD/run \
+$CLANG -O3 main.cpp  $BUILD/convnet.o -o  $BUILD/run \
   -L/home/anhtu/torch-mlir/build/lib \
   -lmlir_c_runner_utils \
   -Wl,-rpath,/home/anhtu/torch-mlir/build/lib

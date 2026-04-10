@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-CUSTOM_OPT="../custom-opt/build/bin/custom-opt"
+CUSTOM_OPT="../../custom-opt/build/bin/custom-opt"
 TORCH_MLIR_OPT="/home/anhtu/torch-mlir/build/bin/torch-mlir-opt"
 MLIR_OPT="/home/anhtu/torch-mlir/build/bin/mlir-opt"
 TRANSLATE="/home/anhtu/torch-mlir/build/bin/mlir-translate"
