@@ -1,10 +1,9 @@
 #!/bin/bash
 set -e
 
-TORCH_MLIR_BUILD="/home/anhtu/torch-mlir/build"
-TRANSLATE="$TORCH_MLIR_BUILD/bin/mlir-translate"
-LLC="$TORCH_MLIR_BUILD/bin/llc"
-CLANG="/usr/bin/clang++"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
+source "$SCRIPT_DIR/../../config.sh"
+ 
 LIB_PATH="$TORCH_MLIR_BUILD/lib"
 CUSTOM_OPT="../../custom-opt/build/bin/custom-opt"
 
