@@ -6,7 +6,7 @@ source "$SCRIPT_DIR/../../config.sh"
 
 LIB_PATH="$TORCH_MLIR_BUILD/lib"
 
-sed -i 's/func.func @main\(.*\) {/func.func @forward\1 attributes {llvm.emit_c_interface} {/g' $BUILD/convnet.mlir
+sed -i 's/func.func @main\(.*\) {/func.func @forward\1 attributes {llvm.emit_c_interface} {/g' build/convnet.mlir
 
 echo "1. Lowering MLIR to LLVM Dialect..."
 $MLIR_OPT build/convnet.mlir \
@@ -34,8 +34,8 @@ $LLC -O3 -filetype=obj -relocation-model=pic build/convnet.ll -o  build/convnet.
 
 echo "4. Compiling run.cpp..."
 $CLANG -O3 run.cpp  build/convnet.o -o  build/run \
-  -L/home/anhtu/torch-mlir/build/lib \
+  -L$TORCH_MLIR_DIR/build/lib \
   -lmlir_c_runner_utils \
-  -Wl,-rpath,/home/anhtu/torch-mlir/build/lib
+  -Wl,-rpath,$TORCH_MLIR_DIR/build/lib
 
 echo "Done!"

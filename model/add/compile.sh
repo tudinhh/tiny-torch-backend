@@ -29,8 +29,8 @@ $LLC -filetype=obj build/add.ll -o build/add.o
 
 echo "4. Compiling run.cpp..."
 $CLANG -O3 run.cpp build/add.o -o build/run \
-  -L/home/anhtu/torch-mlir/build/lib \
+  -L$TORCH_MLIR_DIR/build/lib \
   -lmlir_c_runner_utils \
-  -Wl,-rpath,/home/anhtu/torch-mlir/build/lib
+  -Wl,-rpath,$TORCH_MLIR_DIR/build/lib
 
 echo "Done!"
