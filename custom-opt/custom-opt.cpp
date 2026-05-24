@@ -40,7 +40,7 @@ void linalgToBufferizationPipelineBuilder(mlir::OpPassManager &manager) {
 
 // Define the pipeline with many passes
 void BufferizationToLLVMPipelineBuilder(mlir::OpPassManager &manager) {
-  manager.addPass(createConvertMatmulToBlasLibraryCallPass());
+  // manager.addPass(createConvertMatmulToBlasLibraryCallPass());
   
   manager.addPass(mlir::createConvertLinalgToLoopsPass());
   manager.addPass(mlir::memref::createExpandStridedMetadataPass());
