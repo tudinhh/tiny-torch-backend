@@ -4,11 +4,12 @@ set -e
 mkdir -p build
 cd build
 
-TORCH_MLIR="/home/anhtu/torch-mlir"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
+source "$SCRIPT_DIR/../../config.sh"
 
 cmake -G Ninja \
-  -DMLIR_DIR=$TORCH_MLIR/build/lib/cmake/mlir \
-  -DLLVM_DIR=$TORCH_MLIR/build/lib/cmake/llvm \
+  -DMLIR_DIR=$TORCH_MLIR_DIR/build/lib/cmake/mlir \
+  -DLLVM_DIR=$TORCH_MLIR_DIR/build/lib/cmake/llvm \
   ..
 
 ninja

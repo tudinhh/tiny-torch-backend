@@ -18,7 +18,7 @@ The second option is translated into `linalg` dialect but on the tensor type. Af
 ### Further lowering
 Once the IR reach `linalg` dialect, the compiler performs a series of transformations. Eventually, the MLIR is converted into LLVM IR in `add.ll`.
 
-Then, the file is compiled into an object file, which then is used to build a executable.
+Then, the file is compiled into an object file, which then is used to build an executable.
 
 To summarize, the model undergoes a series of transformations: PyTorch model → torch dialect → linalg dialect  → LLVM IR → executable. By the time it reaches the LLVM IR stage, it has lost all high-level architectural semantics, leaving only low-level instructions such as load, store, and add.
 

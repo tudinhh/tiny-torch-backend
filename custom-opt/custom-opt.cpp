@@ -26,6 +26,7 @@
 // Defined in ConvertMatMulToBlas.cpp
 std::unique_ptr<mlir::Pass> createConvertMatmulToBlasLibraryCallPass();
 
+// Define the pipeline with many passes
 void linalgToBufferizationPipelineBuilder(mlir::OpPassManager &manager) {
   manager.addPass(mlir::createCanonicalizerPass());
   manager.addPass(mlir::createConvertTensorToLinalgPass());
@@ -38,6 +39,7 @@ void linalgToBufferizationPipelineBuilder(mlir::OpPassManager &manager) {
   mlir::bufferization::buildBufferDeallocationPipeline(manager, deallocationOptions);
 }
 
+// Define the pipeline with many passes
 void BufferizationToLLVMPipelineBuilder(mlir::OpPassManager &manager) {
   manager.addPass(createConvertMatmulToBlasLibraryCallPass());
   
