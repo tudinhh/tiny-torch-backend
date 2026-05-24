@@ -10,7 +10,7 @@ BUILD="./build"
 
 echo "1. Lowering MLIR to LLVM Dialect..."
 $CUSTOM_OPT build/convnet.mlir \
-  -pass-pipeline="builtin.module(linalg-to-bufferization,bufferization-to-llvm)" \
+  -pass-pipeline="builtin.module(linalg-to-bufferization,convert-matmul-to-blas,bufferization-to-llvm)" \
   -o build/convnet_llvm.mlir
 
 echo "2. Translating to LLVM IR..."

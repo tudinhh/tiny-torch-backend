@@ -44,15 +44,15 @@ int main() {
   };
 
   // ==================== BENCHMARK HARNESS ====================
-  const int warmup_runs = 10;
-  const int benchmark_runs = 100;
+  const int warmup_runs = 2;
+  const int benchmark_runs = 5;
 
-  std::cout << "Warming up the model for " << warmup_runs << " runs...\n";
+  std::cout << "1. Warm-up runs: " << warmup_runs << "\n";
   for (int i = 0; i < warmup_runs; ++i) {
     _mlir_ciface_forward(&outputMemRef, &inputMemRef);
   }
 
-  std::cout << "Profiling execution for " << benchmark_runs << " runs...\n";
+  std::cout << "2. Benchmark runs: " << benchmark_runs << "\n";
   auto start = std::chrono::high_resolution_clock::now();
   for (int i = 0; i < benchmark_runs; ++i) {
     _mlir_ciface_forward(&outputMemRef, &inputMemRef);

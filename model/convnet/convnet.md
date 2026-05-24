@@ -1,7 +1,7 @@
 ## About the Model
 This targets a standard Convolutional Neural Network.
 
-## Compilation Pipeline
+## Custom pass: OpenBLAS
 The compilation process leverages a custom MLIR optimization pass to replace standard matrix computations with high-performance OpenBLAS calls.
 
 ### Tool Entry Point (custom-opt.cpp)
@@ -28,8 +28,8 @@ This file defines the conversion logic to replace `linalg.matmul` operations wit
 
 ## Runtime
 This time, a profiling code is added into `run.cpp` to compare the run time between the code with and without OpenBLAS:
-- w/ OpenBLAS: 182 ms
-- w/o OpenBLAS: 156 ms
+- w/ OpenBLAS: 124 ms
+- w/o OpenBLAS: 144 ms
 
 ## Pop-up Questions
 No question.

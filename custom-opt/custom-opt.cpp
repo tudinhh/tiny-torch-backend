@@ -23,7 +23,6 @@
 #include "mlir/Dialect/MemRef/Transforms/Passes.h"
 #include "mlir/Conversion/ReconcileUnrealizedCasts/ReconcileUnrealizedCasts.h"
 
-// Defined in ConvertMatMulToBlas.cpp
 std::unique_ptr<mlir::Pass> createConvertMatmulToBlasLibraryCallPass();
 
 // Define the pipeline with many passes
@@ -66,6 +65,10 @@ int main(int argc, char **argv) {
   mlir::DialectRegistry registry;
   mlir::registerAllDialects(registry);
   mlir::registerAllPasses();
+
+  mlir::registerPass([]() {
+        return createConvertMatmulToBlasLibraryCallPass();
+  });
 
   mlir::PassPipelineRegistration<>(
       "linalg-to-bufferization", "Lower linalg to bufferization", linalgToBufferizationPipelineBuilder);
