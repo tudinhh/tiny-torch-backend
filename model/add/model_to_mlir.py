@@ -6,8 +6,8 @@ class AddModel(torch.nn.Module):
         return a + b
 
 model = AddModel()
-a = torch.ones(2, 2)
-b = torch.ones(2, 2)
+a = torch.ones(2, 2, dtype=torch.int32)
+b = torch.ones(2, 2, dtype=torch.int32)
 
 module_torch = torchscript.compile(
     model, 

@@ -6,7 +6,6 @@ source "$SCRIPT_DIR/../../config.sh"
 
 CUSTOM_OPT="../../custom-opt/build/bin/custom-opt"
 LIB_PATH="$TORCH_MLIR_DIR/build/lib"
-BUILD="./build"
 
 echo "- Apply MLIR transformations"
 $CUSTOM_OPT build/cnn.mlir \

@@ -22,6 +22,7 @@ include(HandleLLVMOptions)
 add_llvm_executable(custom-opt
   custom-opt.cpp
   ConvertMatmulToBlas.cpp
+  AddOnePattern.cpp
   PARTIAL_SOURCES_INTENDED
 )
 

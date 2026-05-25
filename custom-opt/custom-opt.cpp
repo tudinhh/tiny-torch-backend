@@ -24,6 +24,7 @@
 #include "mlir/Conversion/ReconcileUnrealizedCasts/ReconcileUnrealizedCasts.h"
 
 std::unique_ptr<mlir::Pass> createConvertMatmulToBlasLibraryCallPass();
+std::unique_ptr<mlir::Pass> createExperimentAddOnePass();
 
 // Define a pipeline with many passes: linalgToBufferizationPipeline
 void linalgToBufferizationPipelineBuilder(mlir::OpPassManager &manager) {
@@ -68,6 +69,10 @@ int main(int argc, char **argv) {
 
   mlir::registerPass([]() {
         return createConvertMatmulToBlasLibraryCallPass();
+  });
+
+  mlir::registerPass([]() {
+        return createExperimentAddOnePass();
   });
 
   mlir::PassPipelineRegistration<>(
