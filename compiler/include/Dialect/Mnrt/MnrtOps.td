@@ -11,7 +11,7 @@ def Mnrt_Dialect : Dialect {
   let summary = "Mini-Runtime hardware abstraction and dispatch dialect.";
   let description = [{
     The `mnrt` dialect models explicit hardware command buffers, memory hierarchies,
-    and kernel dispatch for NPU-like architectures.
+    and kernel dispatch.
   }];
   let cppNamespace = "::mnrt";
 }

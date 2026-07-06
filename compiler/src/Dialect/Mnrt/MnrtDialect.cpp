@@ -4,7 +4,6 @@
 using namespace mlir;
 using namespace mnrt;
 
-// Remove the path prefix here
 #include "MnrtOpsDialect.cpp.inc"
 
 void MnrtDialect::initialize() {

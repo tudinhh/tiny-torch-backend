@@ -11,4 +11,5 @@ target_link_libraries(mnrt-opt PRIVATE
   MLIRArithDialect
   MLIRSCFDialect
   MLIRLLVMDialect
+  MLIRLinalgDialect
 )
